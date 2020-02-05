@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { users } from "./../../assets/users";
 
 @Component({
@@ -13,6 +13,8 @@ export class LoginFormComponent implements OnInit {
   password: string;
   validLogin: boolean = false;
 
+  @Output() messageEvent = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit() {
@@ -20,22 +22,20 @@ export class LoginFormComponent implements OnInit {
   }
 
   //Highly insecure login. Temporary.
-  login(loginInfo) {
-    for(const user of users) {
-      if(user.username == this.username && user.password == this.password) {
+  login() {
+    for (const user of users) {
+      if (user.username == this.username && user.password == this.password) {
         this.validLogin = true;
         break;
       }
+      else {
+        this.validLogin = false;
+      }
     }
 
-    if(this.validLogin) {
-      //Send message to app parent
-    }
-    else {
-      this.username = "";
-      this.password = "";
-    }
-
+    this.messageEvent.emit(this.validLogin);
+    this.username = "";
+    this.password = "";
   }
 
 }

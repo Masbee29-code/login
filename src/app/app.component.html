@@ -6,7 +6,6 @@
     </form>
 </nav>
 
-
-<app-login-form></app-login-form>
-<app-post-login></app-post-login>
+<app-login-form *ngIf="!loggedIn" (messageEvent)="recieveMessage($event)"></app-login-form>
+<app-post-login *ngIf="loggedIn"></app-post-login>
 <router-outlet></router-outlet>
