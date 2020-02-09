@@ -6,6 +6,18 @@
     </form>
 </nav>
 
-<app-login-form *ngIf="!loggedIn" (messageEvent)="recieveMessage($event)"></app-login-form>
-<app-post-login *ngIf="loggedIn"></app-post-login>
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4 text-center p-5">
+            <app-login-form *ngIf="!loggedIn" (messageEvent)="recieveMessage($event)"></app-login-form>
+            <app-post-login *ngIf="loggedIn"></app-post-login>
+        </div>
+    </div>
+</div>
+
+<div class="alert fixed-bottom" [ngClass]="alertStyle" *ngIf="message">
+    {{message}}
+</div>
+
 <router-outlet></router-outlet>

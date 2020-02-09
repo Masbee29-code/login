@@ -1,10 +1,10 @@
-<h1>Login</h1>
-<form #form="ngForm" (submit)="login()">
-    <label for="">Username</label>
-    <input type="text" name="username" [(ngModel)]="username"><br>
+<h1 class="">Login</h1>
+<form #form="ngForm" class="bg-secondary p-3 rounded" (submit)="login()">
+    <label for=""><h3>Username</h3></label><br>
+    <input type="text" class="form-control" name="username" [(ngModel)]="username"><br>
     
-    <label for="">Password</label>
-    <input type="password" name="password" [(ngModel)]="password"><br>
+    <label for=""><h3>Password</h3></label><br>
+    <input type="password" class="form-control" name="password" [(ngModel)]="password"><br>
 
-    <button type="submit">Login</button>
+    <button type="submit" class="btn btn-primary form-control">Login</button>
 </form>
